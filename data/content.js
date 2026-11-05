@@ -141,3 +141,13 @@ export const faqs = [
     a: "Yes, we deliver anywhere in Nigeria. Delivery cost depends on the distance. Ask us for a quote.",
   },
 ];
+
+// Hero slideshow: transparent cut-out photos in /public/hero, each linked to a car in data/cars.js.
+export const heroSlides = [
+  { image: "/hero/bmw-7-series.webp", slug: "bmw-7-series-750li-2020-grey", w: 1800, h: 1005 },
+  { image: "/hero/mercedes-amg-gt.webp", slug: "mercedes-amg-gt-r-2019-grey", w: 1800, h: 685 },
+  { image: "/hero/range-rover-sport.webp", slug: "range-rover-sport-2016-black", w: 1289, h: 1013 },
+  { image: "/hero/bmw-m5.webp", slug: "bmw-m5-competition-2021-white", w: 1556, h: 846 },
+  { image: "/hero/toyota-rav4.webp", slug: "toyota-rav4-2020-silver", w: 1449, h: 917 },
+  { image: "/hero/toyota-camry.webp", slug: "toyota-camry-se-2019-grey", w: 1663, h: 764 },
+];

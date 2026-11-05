@@ -174,3 +174,13 @@
     color: var(--color-ink-950);
   }
 }
+
+/* Hero slideshow progress bar */
+@keyframes hero-progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+.hero-progress {
+  transform-origin: left;
+  animation: hero-progress var(--hero-interval, 6000ms) linear forwards;
+}

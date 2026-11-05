@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight, ArrowUpRight, Gift, MapPin, Phone, Quote } from "lucide-react";
 import CarCard from "@/components/CarCard";
 import HeroSearch from "@/components/HeroSearch";
+import HeroShowcase from "@/components/HeroShowcase";
 import Reveal from "@/components/Reveal";
 import Stars from "@/components/Stars";
 import Faq from "@/components/Faq";
@@ -36,77 +37,25 @@ export default function Home() {
   const featured = featuredCars().slice(0, 6);
   return (
     <>
-      {/* ───────── Hero ───────── */}
-      <section className="relative isolate flex min-h-[100svh] flex-col overflow-hidden bg-cream-100 pt-24">
-        <div className="grid-lines -z-10 text-ink-950/[0.07]" aria-hidden="true" />
-        <div aria-hidden="true" className="absolute inset-x-0 bottom-0 -z-10 h-1/2 bg-gradient-to-t from-cream-200 to-transparent" />
-
-        {/* Giant wordmark behind the car */}
-        <p
-          aria-hidden="true"
-          className="pointer-events-none mt-[2vh] text-center text-[25vw] leading-[0.78] font-semibold tracking-[-0.065em] text-ink-950 select-none sm:mt-[4vh] lg:text-[22vw]"
-        >
-          VIKTOR
+      {/* ───────── Hero: wordmark + car slideshow ───────── */}
+      <HeroShowcase>
+        <p className="eyebrow">Car dealer · Ijebu Ode, Ogun State</p>
+        <p className="mt-4 text-[2.4rem] leading-[0.95] font-medium tracking-[-0.045em] sm:text-6xl lg:text-[3.6rem]">
+          Your dream ride, <span className="text-red-600">our priority.</span>
         </p>
-
-        {/* Car, in front of the wordmark */}
-        <div className="relative mx-auto -mt-[11vw] w-[94vw] max-w-[1180px] lg:-mt-[10vw] lg:w-[72vw]">
-          <div aria-hidden="true" className="absolute inset-x-[8%] bottom-[2%] h-[12%] rounded-[50%] bg-ink-950/45 blur-2xl" />
-          <Image
-            src="/images/hero-car.webp"
-            alt="Grey BMW 7 Series"
-            width={1879}
-            height={1049}
-            preload
-            sizes="(min-width: 1024px) 72vw, 94vw"
-            className="relative h-auto w-full drop-shadow-[0_30px_30px_rgb(13_11_10/0.25)]"
-          />
-        </div>
-
-        <div className="container-x mt-auto grid gap-8 pt-8 pb-10 sm:pb-14 lg:grid-cols-3 lg:items-end">
-          <div className="lg:col-span-2">
-            <p className="eyebrow">Viktor Autos Dealer · Ijebu Ode</p>
-            <h1 className="mt-4 text-[2.6rem] leading-[0.95] font-medium tracking-[-0.045em] sm:text-6xl lg:text-7xl">
-              Find your perfect car
-              <br className="hidden sm:block" /> <span className="text-red-600">today.</span>
-            </h1>
-            <p className="mt-5 max-w-lg text-ink-600">
-              Brand new, Tokunbo and clean 9ja cars, inspected before they reach the lot. We sell, buy and swap, and we
-              deliver anywhere in Nigeria.
-            </p>
-            <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-              <Link href="/cars" className="btn-dark">
-                Explore {cars.length} cars <ArrowRight className="size-3.5" />
-              </Link>
-              <Link href="/sell" className="btn-outline">Sell or swap my car</Link>
-            </div>
-          </div>
-
-          {/* "Let's talk" card, like the reference */}
-          <a
-            href={waLink()}
-            target="_blank"
-            rel="noopener"
-            className="group hidden w-full max-w-xs justify-self-end border border-ink-950 bg-cream-50 sm:block"
-          >
-            <div className="relative grid aspect-[16/9] place-items-center bg-ink-950">
-              <Image src="/brand/logo-light.png" alt="" width={427} height={409} className="h-[72%] w-auto" />
-              <span className="absolute top-3 left-3 flex items-center gap-1.5 font-mono text-[10px] tracking-[0.06em] text-cream-50 uppercase">
-                <span className="size-1.5 animate-pulse bg-emerald-400" /> Online now
-              </span>
-            </div>
-            <div className="flex items-end justify-between p-3">
-              <div>
-                <p className="text-sm font-medium">Let&apos;s talk</p>
-                <p className="mt-0.5 font-mono text-[10px] tracking-[0.04em] text-ink-500 uppercase">WhatsApp · {site.phoneDisplay}</p>
-              </div>
-              <span className="grid size-9 place-items-center bg-ink-950 text-cream-50 transition group-hover:bg-whatsapp">
-                <ArrowUpRight className="size-4" />
-              </span>
-            </div>
+        <p className="mt-4 max-w-lg text-ink-600">
+          Brand new, Tokunbo and clean 9ja cars, inspected before they reach the lot. We sell, buy and swap, and we deliver
+          anywhere in Nigeria.
+        </p>
+        <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+          <Link href="/cars" className="btn-dark">
+            Explore {cars.length} cars <ArrowRight className="size-3.5" />
+          </Link>
+          <a href={waLink()} target="_blank" rel="noopener" className="btn-outline">
+            <WhatsAppIcon className="size-3.5" /> Chat on WhatsApp
           </a>
         </div>
-      </section>
+      </HeroShowcase>
 
       {/* ───────── Quick search ───────── */}
       <section className="relative bg-ink-950 text-cream-50">
