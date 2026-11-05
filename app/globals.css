@@ -1,0 +1,176 @@
+@import "tailwindcss";
+
+/* ───────────────────────── Viktor Autos design library ─────────────────────────
+   Brand: off-white + subtle red. Warm ink for text and dark surfaces.
+   Use the Tailwind utilities these generate, e.g. bg-cream-100, text-red-600, border-line.
+*/
+@theme {
+  /* Off-white scale (backgrounds, cards, borders) */
+  --color-cream-50: #fbf9f5;
+  --color-cream-100: #f3efe8; /* page background */
+  --color-cream-200: #ebe5db; /* alt section */
+  --color-cream-300: #ddd5c8; /* borders, dividers */
+  --color-cream-400: #c9bfb0;
+  --color-cream-500: #a89c8a;
+
+  /* Subtle red scale (accent, CTAs, highlights) */
+  --color-red-50: #fbf1f0;
+  --color-red-100: #f6dfdd;
+  --color-red-200: #ecbdb9;
+  --color-red-300: #dd8f89;
+  --color-red-400: #cc5f58;
+  --color-red-500: #bb3a33; /* primary accent */
+  --color-red-600: #a52c26; /* primary button */
+  --color-red-700: #87231f; /* hover */
+  --color-red-800: #6b1d1a;
+  --color-red-900: #4a1412;
+
+  /* Warm ink (text + dark sections) */
+  --color-ink-950: #0d0b0a;
+  --color-ink-900: #1b1714;
+  --color-ink-800: #2a2420;
+  --color-ink-700: #3d3631;
+  --color-ink-600: #5a524b;
+  --color-ink-500: #7a7169;
+  --color-ink-400: #9c938a;
+
+  --color-line: #d9d1c4;
+  --color-whatsapp: #1fa855;
+
+  --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  --radius-card: 0px;
+  --shadow-soft: 0 1px 2px rgb(27 23 20 / 0.04), 0 8px 24px -12px rgb(27 23 20 / 0.12);
+  --shadow-lift: 0 2px 4px rgb(27 23 20 / 0.05), 0 24px 48px -20px rgb(27 23 20 / 0.28);
+
+  --animate-marquee: marquee 40s linear infinite;
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    background: var(--color-cream-100);
+    color: var(--color-ink-900);
+    font-family: var(--font-sans);
+  }
+  ::selection {
+    background: var(--color-red-500);
+    color: var(--color-cream-50);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-red-500);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@utility container-x {
+  @apply mx-auto w-full max-w-[1360px] px-5 sm:px-10;
+}
+/* Small mono label, e.g. (Curated) or 01 */
+@utility label-mono {
+  @apply font-mono text-[11px] tracking-[0.08em] uppercase;
+}
+@utility eyebrow {
+  @apply inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.08em] text-red-600 uppercase;
+  &::before {
+    content: "";
+    @apply size-1.5 bg-current;
+  }
+}
+@utility h-display {
+  @apply text-5xl leading-[0.95] font-medium tracking-[-0.04em] text-balance sm:text-6xl lg:text-[5.5rem];
+}
+@utility h-section {
+  @apply text-4xl leading-[0.98] font-medium tracking-[-0.035em] text-balance sm:text-5xl lg:text-6xl;
+}
+@utility serif-accent {
+  @apply text-red-600;
+}
+@utility lede {
+  @apply text-base leading-relaxed text-pretty text-ink-600;
+}
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2.5 px-6 py-3.5 font-mono text-[12px] tracking-[0.06em] whitespace-nowrap uppercase transition duration-200 active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50;
+}
+@utility btn-primary {
+  @apply btn bg-red-600 text-cream-50 hover:bg-red-700;
+}
+@utility btn-dark {
+  @apply btn bg-ink-950 text-cream-50 hover:bg-ink-700;
+}
+@utility btn-light {
+  @apply btn bg-cream-50 text-ink-950 hover:bg-white;
+}
+@utility btn-outline {
+  @apply btn border border-ink-950/20 text-ink-950 hover:border-ink-950 hover:bg-ink-950 hover:text-cream-50;
+}
+@utility btn-ghost-light {
+  @apply btn border border-cream-50/30 text-cream-50 hover:border-cream-50 hover:bg-cream-50 hover:text-ink-950;
+}
+@utility btn-whatsapp {
+  @apply btn bg-whatsapp text-white hover:brightness-95;
+}
+@utility card {
+  @apply border border-line bg-cream-50;
+}
+@utility chip {
+  @apply inline-flex items-center gap-1.5 border border-line bg-cream-50 px-2.5 py-1 font-mono text-[10px] tracking-[0.06em] text-ink-700 uppercase;
+}
+@utility field {
+  @apply w-full border border-line bg-cream-50 px-4 py-3.5 text-sm text-ink-900 transition outline-none placeholder:text-ink-400 focus:border-ink-900;
+}
+@utility field-label {
+  @apply mb-2 block font-mono text-[11px] tracking-[0.06em] text-ink-500 uppercase;
+}
+@utility field-select {
+  @apply field;
+  @apply appearance-none bg-[url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='12'%20height='12'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%235a524b'%20stroke-width='2.5'%3E%3Cpath%20d='m6%209%206%206%206-6'/%3E%3C/svg%3E")] bg-[length:12px] bg-[right_1rem_center] bg-no-repeat pr-10;
+}
+/* Shelta-style vertical grid lines. Put inside a relative section. */
+@utility grid-lines {
+  @apply pointer-events-none absolute inset-0 mx-auto max-w-[1360px] px-5 sm:px-10;
+  &::before {
+    content: "";
+    @apply block h-full border-x border-current opacity-100;
+    background-image: linear-gradient(to right, transparent calc(33.333% - 0.5px), currentColor calc(33.333% - 0.5px), currentColor calc(33.333% + 0.5px), transparent calc(33.333% + 0.5px), transparent calc(66.666% - 0.5px), currentColor calc(66.666% - 0.5px), currentColor calc(66.666% + 0.5px), transparent calc(66.666% + 0.5px));
+  }
+}
+
+@layer components {
+  .reveal {
+    opacity: 0;
+    transform: translateY(1.5rem);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Underlined select for dark bars */
+@utility field-select-dark {
+  @apply w-full appearance-none border-0 border-b border-cream-50/20 bg-transparent bg-no-repeat px-0 py-3 pr-6 text-sm text-cream-50 outline-none transition focus:border-red-300;
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='12'%20height='12'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='%23f3efe8'%20stroke-width='2.5'%3E%3Cpath%20d='m6%209%206%206%206-6'/%3E%3C/svg%3E");
+  background-size: 11px;
+  background-position: right 0.25rem center;
+  & option {
+    color: var(--color-ink-950);
+  }
+}
