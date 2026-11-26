@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ContactDock from "@/components/ContactDock";
 import { site } from "@/lib/site";
+import OjdznCredit from "../components/OjdznCredit";
 
 const sans = Geist({
   variable: "--font-geist",
@@ -85,6 +86,7 @@ export default function RootLayout({ children }) {
           {children}
         </main>
         <Footer />
+        <OjdznCredit from="viktor-autos" />
         <ContactDock />
         <script
           type="application/ld+json"
